@@ -1,6 +1,6 @@
 {
   "name": "respec-caniuse-route",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "API endpoint handler for getting caniuse data in a ReSpec friendly way. Used in respec.org",
   "main": "index.js",
   "keywords": [
