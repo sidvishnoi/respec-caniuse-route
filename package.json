@@ -1,0 +1,21 @@
+{
+  "name": "respec-caniuse-route",
+  "version": "1.0.0",
+  "description": "API endpoint handler for getting caniuse data in a ReSpec friendly way. Used in respec.org",
+  "main": "index.js",
+  "keywords": [
+    "respec",
+    "caniuse"
+  ],
+  "repository": "git@github.com:sidvishnoi/respec-caniuse-route.git",
+  "author": "Sid Vishnoi <sidvishnoi8@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "fetch-caniuse-data": "./scraper/get-data.sh",
+    "convert-caniuse-data": "./scraper/process-data.js"
+  },
+  "scripts": {
+    "fetch": "./scraper/get-data.sh",
+    "convert": "./scraper/process-data.js"
+  }
+}
