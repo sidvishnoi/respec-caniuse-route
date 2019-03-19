@@ -1,9 +1,8 @@
 const path = require('path');
-const { readFile, exists } = require('fs');
+const { readFile } = require('fs');
 const { promisify } = require('util');
 
 const readFileAsync = promisify(readFile);
-const fileExistsAsync = promisify(exists);
 const DATA_DIR = path.resolve('./caniuse-data-respec/');
 
 const defaultOptions = {
@@ -67,15 +66,16 @@ async function getData(feature) {
     return cache.get(feature);
   }
   const file = path.format({ dir: DATA_DIR, name: `${feature}.json` });
-  const fileExists = await fileExistsAsync(file);
-  if (!fileExists) {
+  try {
+    const str = await readFileAsync(file, 'utf8');
+    /** @type {Output} */
+    const data = JSON.parse(str);
+    cache.set(feature, data);
+    return data;
+  } catch (error) {
+    console.error(error);
     return {};
   }
-  const str = await readFileAsync(file, 'utf8');
-  /** @type {Output} */
-  const data = JSON.parse(str);
-  cache.set(feature, data);
-  return data;
 }
 
 module.exports = {
