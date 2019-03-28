@@ -3,7 +3,7 @@ const { readFile } = require('fs');
 const { promisify } = require('util');
 
 const readFileAsync = promisify(readFile);
-const DATA_DIR = path.resolve('./caniuse-data-respec/');
+const DATA_DIR = path.resolve(__dirname,'../../caniuse-data-respec/');
 
 const defaultOptions = {
   browsers: ['chrome', 'firefox', 'safari', 'edge'],
