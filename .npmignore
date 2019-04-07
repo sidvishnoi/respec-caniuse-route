@@ -1,5 +1,6 @@
 .DS_Store
 .editorconfig
+.github
 data/
 jsconfig.json
 node_modules
