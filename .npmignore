@@ -1,7 +1,6 @@
 .DS_Store
 .editorconfig
-caniuse-data-respec/
-caniuse-data/
+data/
 jsconfig.json
 node_modules
 package-lock.json

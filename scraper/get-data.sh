@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-if [ -d "caniuse-data" ]; then
-  cd caniuse-data
+mkdir -p data/caniuse
+cd data
+if [ -d "caniuse-raw" ]; then
+  cd caniuse-raw
   git pull origin master
-  cd ..
 else
-  git clone https://github.com/Fyrd/caniuse.git caniuse-data
+  git clone https://github.com/Fyrd/caniuse.git caniuse-raw
 fi

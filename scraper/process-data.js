@@ -19,8 +19,8 @@ const readFileAsync = promisify(readFile);
 const writeFileAsync = promisify(writeFile);
 const readDirAsync = promisify(readdir);
 
-const INPUT_DIR = path.resolve('./caniuse-data/features-json/');
-const OUTPUT_DIR = path.resolve('./caniuse-data-respec/');
+const INPUT_DIR = path.resolve('./data/caniuse-raw/features-json/');
+const OUTPUT_DIR = path.resolve('./data/caniuse/');
 
 async function main() {
   console.log('INPUT_DIR:', INPUT_DIR);
