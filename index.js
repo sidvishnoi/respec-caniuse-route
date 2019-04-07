@@ -38,6 +38,10 @@ async function createResponseBody(options = {}) {
   const browsers = sanitizeBrowsersList(options.browsers);
 
   const data = await getData(feature);
+  if (!data) {
+    return null;
+  }
+
   if (!browsers.length) {
     browsers.push(Object.keys(data));
   }
@@ -74,7 +78,7 @@ async function getData(feature) {
     return data;
   } catch (error) {
     console.error(error);
-    return {};
+    return null;
   }
 }
 
