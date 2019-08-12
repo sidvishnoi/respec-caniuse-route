@@ -59,12 +59,10 @@ function updateInputSource() {
     git.stdout.on('data', (data: ArrayBuffer) => {
       hasUpdated = !data.toString().includes('Already up to date');
     });
-    git.on('error', (error: Error) => {
-      reject(error);
-    });
+    git.on('error', reject);
     git.on('exit', (code: number) => {
       if (code !== 0) {
-        reject(new Error(`The process existed with code ${code}`));
+        reject(new Error(`The process exited with code ${code}`));
       } else {
         resolve(hasUpdated);
       }
