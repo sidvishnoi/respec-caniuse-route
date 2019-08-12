@@ -24,24 +24,26 @@ interface Output {
 const INPUT_DIR = path.join(DATA_DIR, './caniuse-raw/features-json/');
 const OUTPUT_DIR = path.join(DATA_DIR, './caniuse/');
 
+const log = (...args: any[]) => console.log('(caniuse/scraper)', ...args);
+
 export async function main() {
   const hasUpdated = await updateInputSource();
   if (!hasUpdated) {
-    console.log('Nothing to update');
+    log('Nothing to update');
     return false;
   }
 
-  console.log('INPUT_DIR:', INPUT_DIR);
-  console.log('OUTPUT_DIR:', OUTPUT_DIR);
+  log('INPUT_DIR:', INPUT_DIR);
+  log('OUTPUT_DIR:', OUTPUT_DIR);
   if (!existsSync(OUTPUT_DIR)) {
     await mkdir(OUTPUT_DIR, { recursive: true });
   }
 
   const fileNames = await readdir(INPUT_DIR);
-  console.log(`Processing ${fileNames.length} files...`);
+  log(`Processing ${fileNames.length} files...`);
   const promisesToProcess = fileNames.map(processFile);
   await Promise.all(promisesToProcess);
-  console.log(`Processed ${fileNames.length} files.`);
+  log(`Processed ${fileNames.length} files.`);
   return true;
 }
 
