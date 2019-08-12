@@ -1,6 +1,6 @@
 {
   "name": "respec-caniuse-route",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "API endpoint handler for getting caniuse data in a ReSpec friendly way. Used in respec.org",
   "main": "index.js",
   "type": "module",
@@ -17,7 +17,7 @@
     "build": "tsc -d",
     "clean": "rm -rf *.js *.d.ts",
     "dev": "tsc -w",
-    "prepare": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "devDependencies": {
     "@types/node": "^12.7.1",
