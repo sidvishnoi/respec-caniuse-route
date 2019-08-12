@@ -1,7 +1,10 @@
 .DS_Store
 .editorconfig
 .github
+.vscode
 data/
-jsconfig.json
+tsconfig.json
 node_modules
 package-lock.json
+*.ts
+!*.d.ts
