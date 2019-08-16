@@ -1,8 +1,8 @@
 name: npm publish
-on: release
+on: [release, pull_request]
 jobs:
   publish-npm:
-    if: github.event.action == 'published'
+    # if: github.event.action == 'published'
     name: Build and Publish to npm
     runs-on: ubuntu-latest
     steps:
@@ -12,7 +12,6 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish # builds via prepublishOnly
+      - run: npm publish --dry-run # builds via prepublishOnly
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
