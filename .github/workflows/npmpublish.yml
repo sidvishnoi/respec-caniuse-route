@@ -5,8 +5,8 @@ jobs:
     name: Build and Publish to npm
     runs-on: ubuntu-latest
     steps:
-      if: github.event.action == 'published'
       - uses: actions/checkout@v1
+        if: github.event.action == 'published'
       - uses: actions/setup-node@v1
         with:
           node-version: 12
