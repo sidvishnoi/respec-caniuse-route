@@ -1,12 +1,13 @@
 name: npm publish
-on: [release, pull_request]
+on:
+  pull_request:
+    if: github.event.action == 'published'
 jobs:
   publish-npm:
     name: Build and Publish to npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-        if: github.event.action == 'published'
       - uses: actions/setup-node@v1
         with:
           node-version: 12
