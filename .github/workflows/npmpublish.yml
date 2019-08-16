@@ -2,7 +2,7 @@ name: npm publish
 on: [release, pull_request]
 jobs:
   publish-npm:
-    # if: github.event.action == 'published'
+    if: github.event.action == 'published'
     name: Build and Publish to npm
     runs-on: ubuntu-latest
     steps:
