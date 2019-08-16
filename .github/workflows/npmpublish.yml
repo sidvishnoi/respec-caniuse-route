@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cancel if not a release publish # workaround has `on` doesn't have this filter
-        run: exit 1
+        run: exit 78
         if: github.event.action != 'published'
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
