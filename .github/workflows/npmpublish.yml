@@ -1,5 +1,5 @@
 name: npm publish
-on: pull_request:
+on: pull_request
 jobs:
   publish-npm:
     name: Build and Publish to npm
