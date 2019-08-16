@@ -5,7 +5,8 @@ jobs:
     name: Build and Publish to npm
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - name: Cancel if not published release
+        run: exit 1
         if: github.event.action != 'published'
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
