@@ -7,6 +7,7 @@ interface Options {
   browsers?: string[];
   versions?: number;
 }
+type NormalizedOptions = Required<Options>;
 
 // [ version, ['y', 'n'] ]
 type BrowserVersionData = [string, ('y' | 'n' | 'a' | string)[]];
@@ -22,11 +23,13 @@ const defaultOptions = {
 
 export const cache = new Map<string, Data>();
 
-export async function createResponseBody(options: Options) {
-  const feature = options.feature;
-  const numVersions = options.versions || defaultOptions.versions;
-  const browsers = sanitizeBrowsersList(options.browsers);
+export function createResponseBody(options: Options) {
+  const opts = normalizeOptions(options);
+  return createResponseBodyJSON(opts);
+}
 
+export async function createResponseBodyJSON(options: NormalizedOptions) {
+  const { feature, browsers, versions } = options;
   const data = await getData(feature);
   if (!data) {
     return null;
@@ -39,9 +42,16 @@ export async function createResponseBody(options: Options) {
   const response: Data = Object.create(null);
   for (const browser of browsers) {
     const browserData = data[browser] || [];
-    response[browser] = browserData.slice(0, numVersions);
+    response[browser] = browserData.slice(0, versions);
   }
   return response;
+}
+
+function normalizeOptions(options: Options): NormalizedOptions {
+  const feature = options.feature;
+  const versions = options.versions || defaultOptions.versions;
+  const browsers = sanitizeBrowsersList(options.browsers);
+  return { feature, versions, browsers };
 }
 
 function sanitizeBrowsersList(browsers?: string | string[]) {
