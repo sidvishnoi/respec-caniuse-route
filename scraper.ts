@@ -132,3 +132,10 @@ async function writeJSON(file: string, json: Output) {
   const str = JSON.stringify(json);
   await writeFile(file, str);
 }
+
+if (require.main === module) {
+  main({ forceUpdate: true }).catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+}
