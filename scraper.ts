@@ -26,9 +26,15 @@ const OUTPUT_DIR = path.join(DATA_DIR, './caniuse/');
 
 const log = (...args: any[]) => console.log('(caniuse/scraper)', ...args);
 
-export async function main() {
+const defaultOptions = {
+  forceUpdate: false,
+};
+type Options = typeof defaultOptions;
+
+export async function main(options: Partial<Options> = {}) {
+  const opts = { ...defaultOptions, ...options };
   const hasUpdated = await updateInputSource();
-  if (!hasUpdated) {
+  if (!hasUpdated && !opts.forceUpdate) {
     log('Nothing to update');
     return false;
   }
