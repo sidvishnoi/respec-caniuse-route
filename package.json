@@ -12,6 +12,7 @@
   "repository": "git@github.com:sidvishnoi/respec-caniuse-route.git",
   "author": "Sid Vishnoi <sidvishnoi8@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "tsc -d",
     "clean": "rm -rf *.js *.d.ts",
@@ -27,5 +28,8 @@
     "arrowParens": "avoid",
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "dependencies": {
+    "es-main": "github:sidvishnoi/es-main"
   }
 }

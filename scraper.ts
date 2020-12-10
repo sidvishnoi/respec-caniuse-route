@@ -7,6 +7,7 @@
 import { promises as fs, existsSync } from 'fs';
 import { spawn } from 'child_process';
 import * as path from 'path';
+import esMain from 'es-main';
 import { DATA_DIR } from './constants.js';
 
 const { readFile, writeFile, readdir, mkdir } = fs;
@@ -133,7 +134,7 @@ async function writeJSON(file: string, json: Output) {
   await writeFile(file, str);
 }
 
-if (require.main === module) {
+if (esMain(import.meta)) {
   main({ forceUpdate: true }).catch(err => {
     console.error(err);
     process.exit(1);

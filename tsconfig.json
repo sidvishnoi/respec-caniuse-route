@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "removeComments": false,
     "typeRoots": [
       "./node_modules/@types"
