@@ -17,6 +17,7 @@
     "build": "tsc -d",
     "clean": "rm -rf *.js *.d.ts",
     "dev": "tsc -w",
+    "scraper": "node scripts/scraper.js",
     "prepare": "npm run build",
     "prepublishOnly": "npm run clean && npm run build"
   },
@@ -29,7 +30,5 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "dependencies": {
-    "es-main": "github:sidvishnoi/es-main"
-  }
+  "dependencies": {}
 }
