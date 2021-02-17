@@ -1,3 +1,9 @@
+## ⚠ Deprecated ⚠
+
+Merged into respec.org with https://github.com/marcoscaceres/respec.org/pull/146.
+
+---
+
 # ReSpec `Can I Use` API Route
 
 API endpoint handler for getting caniuse data in a ReSpec friendly way. Used in https://respec.org
